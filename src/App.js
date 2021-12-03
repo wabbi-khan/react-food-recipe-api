@@ -11,12 +11,16 @@ function App() {
     var result = await Axios.get(url);
     console.log(result.data);
   };
+  const onSubmit = (e) => {
+    e.preventDefault();
+    getRecipes();
+  };
   return (
     <div className="app">
       <p className="title" onClick={getRecipes}>
         Food Recipe Plaza 🍔
       </p>
-      <form className="app-searchForm">
+      <form className="app-searchForm" onSubmit={onSubmit}>
         <input
           className="app-input"
           type="text"

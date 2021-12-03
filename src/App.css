@@ -18,3 +18,12 @@
   max-width: 100vh;
   font-size: 15px;
 }
+.app-submit {
+  padding: 6px 16px;
+  font-size: 15px;
+  margin-left: 6px;
+  background-color: #02aff0;
+  border: 1px solid #02aff0;
+  border-radius: 4px;
+  color: white;
+}
