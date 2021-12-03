@@ -9,7 +9,7 @@ function App() {
   const YOUR_APP_ID = "3b620bbf";
   const YOUR_APP_KEY = "bd121d42f201323d54f9cdd1229c29e6";
 
-  var url = `https://api.edamam.com/search?q=${query}&app_id=${YOUR_APP_ID}&app_key=${YOUR_APP_KEY}&&health=${healthLabel}`;
+  var url = `https://api.edamam.com/search?q=${query}&app_id=${YOUR_APP_ID}&app_key=${YOUR_APP_KEY}&health=${healthLabel}`;
   const getRecipes = async () => {
     var result = await Axios.get(url);
     setrecipes(result.data.hits);
@@ -34,14 +34,16 @@ function App() {
         />
         <input className="app-submit" type="submit" value="Search" />
         <select className="app-health">
-          <option value="vegan" onClick={() => sethealthLabel("vegan")}>
-            Vegan
+          <option onClick={() => sethealthLabel("vegan")}>Vegan</option>
+          <option onClick={() => sethealthLabel("Vegetarian")}>
+            Vegetarian
           </option>
-          <option value="chicken" onClick={() => sethealthLabel("chicken")}>
-            Chicken
+          <option onClick={() => sethealthLabel("Pescatarian")}>
+            Pescatarian
           </option>
-          <option value="beef" onClick={() => sethealthLabel("beef")}>
-            beef
+          <option onClick={() => sethealthLabel("Egg-Free")}>Egg-Free</option>
+          <option onClick={() => sethealthLabel("Red-Meat-Free")}>
+            Red-Meat-Free
           </option>
         </select>
       </form>
