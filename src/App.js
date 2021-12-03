@@ -1,23 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import Axios from "axios";
 function App() {
+  const YOUR_APP_ID = "3b620bbf";
+  const YOUR_APP_KEY = "bd121d42f201323d54f9cdd1229c29e6";
+
+  var url = `https://api.edamam.com/search?q=chicken&app_id=${YOUR_APP_ID}&app_key=${YOUR_APP_KEY}&&health=alcohol-free`;
+  const getRecipes = async () => {
+    var result = await Axios.get(url);
+    console.log(result.data);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 onClick={getRecipes}>hello</h1>
     </div>
   );
 }
