@@ -1,14 +1,18 @@
 import "./App.css";
 import Axios from "axios";
 import { useState } from "react";
+import RecipeTile from "./Recipes/RecipeTile";
 function App() {
   const [query, setquery] = useState("");
+  const [recipes, setrecipes] = useState([]);
+  const [healthLabel, sethealthLabel] = useState("vegan");
   const YOUR_APP_ID = "3b620bbf";
   const YOUR_APP_KEY = "bd121d42f201323d54f9cdd1229c29e6";
 
-  var url = `https://api.edamam.com/search?q=${query}&app_id=${YOUR_APP_ID}&app_key=${YOUR_APP_KEY}&&health=alcohol-free`;
+  var url = `https://api.edamam.com/search?q=${query}&app_id=${YOUR_APP_ID}&app_key=${YOUR_APP_KEY}&&health=${healthLabel}`;
   const getRecipes = async () => {
     var result = await Axios.get(url);
+    setrecipes(result.data.hits);
     console.log(result.data);
   };
   const onSubmit = (e) => {
@@ -29,7 +33,23 @@ function App() {
           onChange={(e) => setquery(e.target.value)}
         />
         <input className="app-submit" type="submit" value="Search" />
+        <select className="app-health">
+          <option value="vegan" onClick={() => sethealthLabel("vegan")}>
+            Vegan
+          </option>
+          <option value="chicken" onClick={() => sethealthLabel("chicken")}>
+            Chicken
+          </option>
+          <option value="beef" onClick={() => sethealthLabel("beef")}>
+            beef
+          </option>
+        </select>
       </form>
+      <div className="app-recipes">
+        {recipes.map((recipe) => {
+          return <RecipeTile recipe={recipe} />;
+        })}
+      </div>
     </div>
   );
 }

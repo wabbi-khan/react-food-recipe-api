@@ -23,7 +23,20 @@
   font-size: 15px;
   margin-left: 6px;
   background-color: #02aff0;
-  border: 1px solid #02aff0;
+  border: 2px solid #02aff0;
   border-radius: 4px;
   color: white;
+  cursor: pointer;
+}
+.app-submit:hover {
+  background-color: white;
+  color: #02aff0;
+  cursor: pointer;
+}
+
+.app-recipes {
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: 230px 230px;
+  align-items: baseline;
 }
