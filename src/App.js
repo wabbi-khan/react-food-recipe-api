@@ -10,8 +10,10 @@ function App() {
     console.log(result.data);
   };
   return (
-    <div className="App">
-      <h1 onClick={getRecipes}>hello</h1>
+    <div className="app">
+      <p className="title" onClick={getRecipes}>
+        Food Recipe Plaza 🍔
+      </p>
     </div>
   );
 }
